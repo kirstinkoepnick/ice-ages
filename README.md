@@ -18,6 +18,9 @@ Glacial-interglacial oscillations exhibit a periodicity of approximately 100 kyr
 * The python functions are written to use "solve_ivp" but can be adapted for "ode_int", if desired.
 * To run the modified sea-ice switch, for example:
 ```
+from scipy.integrate import solve_ivp
+import numpy as np
+from mod_sis import mod_sis
 from sis_params import *
 
 YEARS_TO_RUN_SIS = 1100000
@@ -29,23 +32,18 @@ dt = 1 #evaluation steps
 times_save = np.arange(time_start, time_end, dt)
 tspan = (times_save[0], times_save[-1])
 
-V0_1 = np.array([0.1]) 
-
 method = 'BDF' #method best used for stiff odes
-asi = 0
-
-asi_store = []
-t_store = []
+asi = 0 #sea-ice switch initial 
 
 print('Solving Modified SIS...')
-sol_sis = solve_ivp(mod_sis, args = (p,), t_span=tspan, y0=V0_1, t_eval = times_save, method = method,max_step = 0.1, rtol=1e-9, atol=1e-9)
+sol_sis = solve_ivp(mod_sis, args = (p,), t_span=tspan, y0=V0, t_eval = times_save, method = method,max_step = 0.1, rtol=1e-9, atol=1e-9)
 
 time_vals_sis, ice_vals_sis = sol_sis.t, sol_sis.y[0]
 print('Done.')
 ```
-* To run the insolation-driven simple model (idsm), simply use the function "integrate_model()" given in "idsm.py". For example:
+* To run the insolation-driven simple model (IDSM), simply use the function "integrate_model()" given in "idsm.py". For example:
 ```
-YEARS_TO_RUN = 800000 #1100000
+YEARS_TO_RUN = 800000
 V0 = np.array([1])
 print('Solving ISTM...')
 ice_vals_idsm = integrate_model(YEARS_TO_RUN/1000, V0)
