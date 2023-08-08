@@ -10,8 +10,8 @@ Glacial-interglacial oscillations exhibit a periodicity of approximately 100 kyr
 
 ### Data
 
-* Berger (1978)'s calculation of insolation forcing for June 21st at 65 $`^\circ`$N is found in "Milankovitch.dat" file and interpolated for any desired time in "milankovitch.py". 
-* We use the oxygen-18 compilation of Huybers & Wunsch (2004) found in "observations.dat". 
+* Berger (1978)'s calculation of insolation forcing for June 21st at 65 $`^\circ`$N is found in `Milankovitch.dat` file and interpolated for any desired time in `milankovitch.py`. 
+* We use the oxygen-18 compilation of Huybers & Wunsch (2004) found in `observations.dat`. 
 
 ### Running the simple models
 
@@ -43,6 +43,9 @@ print('Done.')
 ```
 * To run the insolation-driven simple model (IDSM), simply use the function "integrate_model()" given in "idsm.py". For example:
 ```
+from scipy.integrate import solve_ivp
+import numpy as np
+from idsm import * 
 YEARS_TO_RUN = 800000
 V0 = np.array([1])
 print('Solving ISTM...')
