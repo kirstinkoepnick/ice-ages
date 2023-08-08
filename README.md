@@ -15,7 +15,7 @@ Glacial-interglacial oscillations exhibit a periodicity of approximately 100 kyr
 
 ### Running the simple models
 
-* The python functions are written to use "solve_ivp" but can be adapted for "ode_int", if desired.
+* The python functions are written to use `scipy.integrate.solve_ivp` but can be adapted for `scipy.integrate.ode_int`, if desired.
 * To run the modified sea-ice switch, for example:
 ```
 from scipy.integrate import solve_ivp
