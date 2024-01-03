@@ -1,4 +1,4 @@
-# Are the Pleistocene 100 kyr ice ages driven or phase-locked by Milankovitch forcing?
+# Distinguishing between insolation-driven and phase-locked 100-kyr ice age scenarios using example models
 
 An investigation of glacial-interglacial oscillations and the role of insolation variations.
 
